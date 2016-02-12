@@ -2,11 +2,11 @@
 /*   Provided Code - Please Don't Edit   */
 ////////////////////////////////////////////////
 'use strict';
-
+playToFive();
 function getInput()
 {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
-    return prompt();
+    // console.log("Please choose either 'rock', 'paper', or 'scissors'.")
+    return prompt("Please choose either 'rock', 'paper', or 'scissors'.");
 }
 
 function randomPlay()
@@ -28,7 +28,7 @@ function randomPlay()
 ////////////////////////////////////////////////
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
-
+var move = null;
 function getPlayerMove(move)
 {
     // Write an expression that operates on a variable called `move`
@@ -134,15 +134,19 @@ function playToFive()
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
     /* YOUR CODE HERE */
-    if(playerWins < 6 && computerWins < 6)
+    while(playerWins < 5 && computerWins < 5)
     {
-        if(getWinner(getPlayerMove(move),  getComputerMove(move)) == 'player')
+        
+        var playerMove = getPlayerMove(move);
+        var computerMove = getComputerMove(move);
+        var result = getWinner(playerMove,  computerMove);
+        if(result == 'player')
         {
             playerWins ++;
             console.log("Player wins!");
             
         }
-        else if(getWinner(getPlayerMove(move),  getComputerMove(move)) == 'computer')
+        else if(result == 'computer')
         {
             computerWins ++;
             console.log("Computer wins!");
@@ -152,7 +156,7 @@ function playToFive()
             console.log("It's a draw!");
         }
 
-        console.log('Player chose ' + getPlayerMove(move) + ' while Computer chose ' + getComputerMove(move));
+        console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
         console.log('The score is currently ' + playerWins + ' to ' + computerWins + '\n');
 
     }
